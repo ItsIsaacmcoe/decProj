@@ -12,8 +12,8 @@ public class Main
         }
 
     }
-
-    public static void mainmenu() {
+    public static void main(String[] args)
+    {
         System.out.println("  __  __       _         __  __                  ");
         System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
         System.out.println(" | \\  / | __ _ _ _ __   | \\  / | ___ _ __  _   _ ");
@@ -39,10 +39,6 @@ public class Main
             default:
                 System.out.println("unexpected option");
         }
-    }
-    public static void main(String[] args)
-    {
-        mainmenu();
 
 
 
