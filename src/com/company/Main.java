@@ -14,30 +14,57 @@ public class Main
     }
     public static void main(String[] args)
     {
-        System.out.println("  __  __       _         __  __                  ");
-        System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
-        System.out.println(" | \\  / | __ _ _ _ __   | \\  / | ___ _ __  _   _ ");
-        System.out.println(" | |\\/| |/ _` | | '_ \\  | |\\/| |/ _ \\ '_ \\| | | |");
-        System.out.println(" | |  | | (_| | | | | | | |  | |  __/ | | | |_| |");
-        System.out.println(" |_|  |_|\\__,_|_|_| |_| |_|  |_|\\___|_| |_|\\__,_|");
-        System.out.println();
-        System.out.println();
-        System.out.println("1: manage users             2: logon");
-
-
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-
-        switch (choice)
+        boolean loopy = true;
+        while (loopy == true)
         {
-            case 1:
-                System.out.println("case 1");
-                break;
-            case 2:
-                System.out.println("case 2");
-                break;
-            default:
-                System.out.println("unexpected option");
+            cls();
+            System.out.println("  __  __       _         __  __                  ");
+            System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
+            System.out.println(" | \\  / | __ _ _ _ __   | \\  / | ___ _ __  _   _ ");
+            System.out.println(" | |\\/| |/ _` | | '_ \\  | |\\/| |/ _ \\ '_ \\| | | |");
+            System.out.println(" | |  | | (_| | | | | | | |  | |  __/ | | | |_| |");
+            System.out.println(" |_|  |_|\\__,_|_|_| |_| |_|  |_|\\___|_| |_|\\__,_|");
+            System.out.println();
+            System.out.println();
+            System.out.println("1: manage users             2: logon");
+
+
+            Scanner scanner = new Scanner(System.in);
+            int choice = scanner.nextInt();
+
+            switch (choice)
+            {
+                case 1:
+                    boolean loopy1 = true;
+                    while (loopy1 == true)
+                    {
+                        cls();
+                        System.out.println("User Management");
+                        System.out.println("1: add user         2: list users       3: delete user");
+                        int choice1 = scanner.nextInt();
+                        switch (choice1)
+                        {
+                            case 1:
+                                System.out.println("add user");
+                                break;
+                            case 2:
+                                System.out.println("list users");
+                                break;
+                            case 3:
+                                System.out.println("delete users");
+                                break;
+                            default:
+                                System.out.println("unexpected option");
+                        }
+                    }
+                    break;
+                    case 2:
+                        System.out.println("case 2");
+                        break;
+                    default:
+                        System.out.println("unexpected option");
+
+            }
         }
 
 
