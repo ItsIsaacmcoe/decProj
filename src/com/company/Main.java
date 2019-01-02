@@ -40,17 +40,18 @@ public class Main
                     {
                         cls();
                         System.out.println("User Management");
-                        System.out.println("1: add user         2: list users       3: delete user");
+                        System.out.println("1: add user       2: delete user");
                         int choice1 = scanner.nextInt();
                         switch (choice1)
                         {
                             case 1:
-                                System.out.println("add user");
+                                System.out.println("input username");
+                                String username = scanner.nextLine();
+                                System.out.println("input password");
+                                String password = scanner.nextLine();
+                                useracct newuser = new useracct(username, password);
                                 break;
                             case 2:
-                                System.out.println("list users");
-                                break;
-                            case 3:
                                 System.out.println("delete users");
                                 break;
                             default:
@@ -58,11 +59,11 @@ public class Main
                         }
                     }
                     break;
-                    case 2:
-                        System.out.println("case 2");
-                        break;
-                    default:
-                        System.out.println("unexpected option");
+                case 2:
+                    System.out.println("case 2");
+                    break;
+                default:
+                    System.out.println("unexpected option");
 
             }
         }
@@ -78,5 +79,26 @@ public class Main
 //       isaac.construct(user, paswd);
 //       System.out.println(isaac.acctPassword);
 //       System.out.println(isaac.acctUsername);
+    }
+}
+
+class adminacct
+{
+    //the superclass that allows for privilege control
+}
+class useracct extends adminacct
+{
+    //the subclass that extends adminacct
+    String username;
+    String password;
+    public useracct(String user, String passwd)
+    {
+        username = user;
+        password = passwd;
+    }
+    public void listvars()
+    {
+        System.out.println(username);
+        System.out.println(password);
     }
 }
