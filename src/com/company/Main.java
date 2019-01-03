@@ -15,8 +15,17 @@ public class Main
     public static void main(String[] args)
     {
         boolean loopy = true;
-        while (loopy == true)
+        while (loopy)
         {
+            //creates array of users
+            useracct[] user = new useracct[100];
+            for(int i = 0; i<100; i++)
+            {
+                user[i] = new useracct("default", null);
+            }
+            Scanner scanner = new Scanner(System.in);
+            int x = 0;
+
             cls();
             System.out.println("  __  __       _         __  __                  ");
             System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
@@ -26,69 +35,64 @@ public class Main
             System.out.println(" |_|  |_|\\__,_|_|_| |_| |_|  |_|\\___|_| |_|\\__,_|");
             System.out.println();
             System.out.println();
-            System.out.println("1: manage users             2: logon");
-
-
-            Scanner scanner = new Scanner(System.in);
+            System.out.println("1: manage users");
             int choice = scanner.nextInt();
-
+            //switch case demo
             switch (choice)
             {
                 case 1:
                     boolean loopy1 = true;
-                    while (loopy1 == true)
+                    while (loopy1)
                     {
                         cls();
                         System.out.println("User Management");
-                        System.out.println("1: add user       2: delete user");
+                        System.out.println("1: add user         2: list users");
                         int choice1 = scanner.nextInt();
                         switch (choice1)
                         {
                             case 1:
                                 System.out.println("input username");
-                                String username = scanner.nextLine();
+                                String username = scanner.next();
                                 System.out.println("input password");
-                                String password = scanner.nextLine();
-                                useracct newuser = new useracct(username, password);
-                                break;
+                                String password = scanner.next();
+                                user[x].setCreds(username, password);
+                                System.out.println("success! confirm credentials");
+                                user[x].enterPrompt();
+                                user[x].listvars();
+                                user[x].enterPrompt();
+                                x++;
+                            break;
                             case 2:
-                                System.out.println("delete users");
-                                break;
+                                //start back here
+                            break;
                             default:
                                 System.out.println("unexpected option");
                         }
                     }
-                    break;
-                case 2:
-                    System.out.println("case 2");
                     break;
                 default:
                     System.out.println("unexpected option");
 
             }
         }
-
-
-
-// test
-
-
-//       useracct isaac = new useracct();
-//       String user = "isaacmcoe";
-//       String paswd = "logmein";
-//       isaac.construct(user, paswd);
-//       System.out.println(isaac.acctPassword);
-//       System.out.println(isaac.acctUsername);
     }
 }
 
-class adminacct
+//superclass that allows for general methods
+class compacct
 {
-    //the superclass that allows for privilege control
+    //method demonstrating inheritance
+    public void enterPrompt()
+    {
+        System.out.println("Press \"ENTER\" to continue");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+    }
 }
-class useracct extends adminacct
+
+//the subclass that extends compacct
+class useracct extends compacct
 {
-    //the subclass that extends adminacct
     String username;
     String password;
     public useracct(String user, String passwd)
@@ -98,7 +102,12 @@ class useracct extends adminacct
     }
     public void listvars()
     {
-        System.out.println(username);
-        System.out.println(password);
+        System.out.println("username = " + username);
+        System.out.println("password = " + password);
+    }
+    public void setCreds(String user, String passwd)
+    {
+        username = user;
+        password = passwd;
     }
 }
