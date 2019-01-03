@@ -1,6 +1,7 @@
 package com.company;
 import java.util.Scanner;
 public class Main
+
 {
     public static void cls()
     {
@@ -21,11 +22,11 @@ public class Main
             useracct[] user = new useracct[100];
             for(int i = 0; i<100; i++)
             {
-                user[i] = new useracct("default", null);
+                user[i] = new useracct("default", "default");
             }
             Scanner scanner = new Scanner(System.in);
             int x = 0;
-
+            int count;
             cls();
             System.out.println("  __  __       _         __  __                  ");
             System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
@@ -46,7 +47,7 @@ public class Main
                     {
                         cls();
                         System.out.println("User Management");
-                        System.out.println("1: add user         2: list users");
+                        System.out.println("1: add user             2: list users");
                         int choice1 = scanner.nextInt();
                         switch (choice1)
                         {
@@ -58,12 +59,27 @@ public class Main
                                 user[x].setCreds(username, password);
                                 System.out.println("success! confirm credentials");
                                 user[x].enterPrompt();
-                                user[x].listvars();
+                                user[x].listCreds();
                                 user[x].enterPrompt();
                                 x++;
                             break;
                             case 2:
-                                //start back here
+                                for (count = 0; count < 100; count++)
+                                {
+                                    String pass = user[count].returnPass();
+                                    if (pass.equals("default"))
+                                    {
+                                        count++;
+                                    }
+                                    else
+                                    {
+                                        user[count].listCreds();
+                                    }
+                                    System.out.println();
+                                    System.out.println();
+                                    System.out.println();
+                                }
+                                //left off here
                             break;
                             default:
                                 System.out.println("unexpected option");
@@ -100,7 +116,7 @@ class useracct extends compacct
         username = user;
         password = passwd;
     }
-    public void listvars()
+    public void listCreds()
     {
         System.out.println("username = " + username);
         System.out.println("password = " + password);
@@ -109,5 +125,9 @@ class useracct extends compacct
     {
         username = user;
         password = passwd;
+    }
+    public String returnPass()
+    {
+        return (password);
     }
 }
