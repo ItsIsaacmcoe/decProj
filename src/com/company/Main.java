@@ -32,12 +32,11 @@ public class Main
         //defines needed variables
         int x = 0;
         int count;
-        int choice = 0;
-        int choice1 = 0;
         //while loop to keep menu running in event of switch break
         boolean loopy = true;
         while (loopy)
         {
+            int choice = 0;
             cls();
             System.out.println("  __  __       _         __  __                  ");
             System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
@@ -67,6 +66,7 @@ public class Main
                     boolean loopy1 = true;
                     while (loopy1)
                     {
+                        int choice1 = 0;
                         cls();
                         //error handling
                         while (choice1 < 1 || choice1 > 3)
