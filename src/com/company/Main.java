@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main
 
 {
-    public static void cls()
+    private static void cls()
     {
         int count = 0;
         while(count < 50)
@@ -15,18 +15,21 @@ public class Main
     }
     public static void main(String[] args)
     {
+        //creates array of users
+        useracct[] user = new useracct[100];
+        for(int i = 0; i<100; i++)
+        {
+            user[i] = new useracct("default", "default");
+        }
+        //creates scanner and defines needed variables
+        Scanner scanner = new Scanner(System.in);
+        int x = 0;
+        int count;
+
         boolean loopy = true;
         while (loopy)
         {
-            //creates array of users
-            useracct[] user = new useracct[100];
-            for(int i = 0; i<100; i++)
-            {
-                user[i] = new useracct("default", "default");
-            }
-            Scanner scanner = new Scanner(System.in);
-            int x = 0;
-            int count;
+
             cls();
             System.out.println("  __  __       _         __  __                  ");
             System.out.println(" |  \\/  |     (_)       |  \\/  |                 ");
@@ -36,7 +39,7 @@ public class Main
             System.out.println(" |_|  |_|\\__,_|_|_| |_| |_|  |_|\\___|_| |_|\\__,_|");
             System.out.println();
             System.out.println();
-            System.out.println("1: manage users");
+            System.out.println("1: manage users        2: quit");
             int choice = scanner.nextInt();
             //switch case demo
             switch (choice)
@@ -47,7 +50,7 @@ public class Main
                     {
                         cls();
                         System.out.println("User Management");
-                        System.out.println("1: add user             2: list users");
+                        System.out.println("1: add user             2: list users          3: back");
                         int choice1 = scanner.nextInt();
                         switch (choice1)
                         {
@@ -58,7 +61,6 @@ public class Main
                                 String password = scanner.next();
                                 user[x].setCreds(username, password);
                                 System.out.println("success! confirm credentials");
-                                user[x].enterPrompt();
                                 user[x].listCreds();
                                 user[x].enterPrompt();
                                 x++;
@@ -74,17 +76,23 @@ public class Main
                                     else
                                     {
                                         user[count].listCreds();
+                                        System.out.println();
                                     }
-                                    System.out.println();
-                                    System.out.println();
-                                    System.out.println();
                                 }
-                                //left off here
+                                user[50].enterPrompt();
                             break;
+
+                            case 3:
+                                loopy1 = false;
+                                break;
                             default:
                                 System.out.println("unexpected option");
                         }
                     }
+                    break;
+
+                case 2:
+                    loopy = false;
                     break;
                 default:
                     System.out.println("unexpected option");
@@ -98,7 +106,7 @@ public class Main
 class compacct
 {
     //method demonstrating inheritance
-    public void enterPrompt()
+    void enterPrompt()
     {
         System.out.println("Press \"ENTER\" to continue");
         Scanner scanner = new Scanner(System.in);
@@ -109,24 +117,24 @@ class compacct
 //the subclass that extends compacct
 class useracct extends compacct
 {
-    String username;
-    String password;
-    public useracct(String user, String passwd)
+    private String username;
+    private String password;
+    useracct(String user, String passwd)
     {
         username = user;
         password = passwd;
     }
-    public void listCreds()
+    void listCreds()
     {
         System.out.println("username = " + username);
         System.out.println("password = " + password);
     }
-    public void setCreds(String user, String passwd)
+    void setCreds(String user, String passwd)
     {
         username = user;
         password = passwd;
     }
-    public String returnPass()
+    String returnPass()
     {
         return (password);
     }
